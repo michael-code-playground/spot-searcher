@@ -1,0 +1,7 @@
+**Spot searcher app**
+
+The primary goal of this project is to automate and simplify the process of searching for and contacting specific locations using Google Maps. Many of us have experienced the frustration of needing to find a shop, restaurant, pharmacy, or other services quickly, especially when in unfamiliar surroundings. Typically, we open Google Maps on our phones, enter a term like "restaurant," and then scroll through the results, trying to identify spots that meet our criteria, such as specific ratings. When it comes to "bookable" places, we often need to find contact information, such as phone numbers, which can be time-consuming.
+
+This app addresses these challenges by detecting the user's current location and extracting relevant places within a specified radius, currently fixed at 30 km, using the Google Maps API. Users simply enter a search term like "pharmacies," and the app generates a list of locations with ratings above 4.5. The results are displayed on the website and include addresses and phone numbers. Users can download the list as a CSV file for convenience.
+
+Additionally, when accessed on a mobile device, the app allows users to send text messages to selected places. For example, if someone needs to inquire about a specific medicine, they can compose a message like "How much is X medicine," select the desired pharmacies, and send the same text to multiple phone numbers simultaneously.
