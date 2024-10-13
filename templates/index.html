@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spots</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <!-- Description/No Results Message (Always at the top) -->
+    {% if not places_to_display %}
+    <div class="description-section">
+        <p>
+            You're currently in <strong>{{ city }} in {{ country }} </strong>
+            Quickly find places around you—restaurants, shops, and more—by entering a keyword and radius. 
+            The app extracts essential details like phone numbers and addresses, allowing you to easily contact spots. 
+            You can download a CSV file of the results or, if you're on your phone, send SMS messages directly to the spots. 
+        </p>
+    </div>
+    {% endif %}
+
+    <!-- Search Section -->
+    <div class="search-section">
+        <form method="get">
+            <p>What place are you looking for?</p>
+            <input type="text" id="query" class="query-input" name="query" placeholder="Enter your spot">
+            <input type="text" id="radius" class="radius-input" name="radius" placeholder="Radius">
+            <button id="search-button" class="button">Search</button>
+        </form>
+    </div>
+
+    <!-- Results Section -->
+    {% if places_to_display %}
+    <div class="results-section">
+        <ul class="container">
+            {% for place in places_to_display %}
+            <li>
+                <span class="place-name">{{ place.name }}</span>
+                <span class="place-details">{{ place.vicinity }} | Rating: {{ place.rating }} | Phone: {{ place.phone }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <!-- Download Button Section (only appears if results exist) -->
+    <div class="download-section">
+        <form action="/download" method="POST">
+            <button id="download-button" class="button" type="submit">Download CSV</button>
+            <input type="hidden" name="timestamp" value="{{ timestamp }}">
+        </form>
+    
+        <form method="POST" action="/send_sms">
+            {% for place in places_to_display %}
+            <div>
+                <input type="checkbox" name="selected_numbers" value="{{ place.phone }}" checked>
+                <label>{{ place.name }} - {{ place.phone }}</label>
+            </div>
+            {% endfor %}
+            <button id="sms-button" class="button" type="submit">Send SMS</button>
+        </form>
+        
+
+
+
+
+    </div>
+    
+    
+        
+    
+    {% endif %}
+    
+</body>
+</html>

@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="/static/styles.css">
+<link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+
+
+<div class="description-section">    
+
+
+    <p>Click the link below to send a text on: <strong>{{ remaining_numbers[0] }}</strong></p>
+    
+    <a href="{{ sms_url }}" class="send-link">Send</a> <!-- This triggers the SMS sending -->
+</div>
+<div class="description-section">
+    <p>Click the button below to send the SMS to the next contact.</p>
+
+<form action="{{ url_for('sms_sent') }}" method="post">
+  <button id ="next-sms" class="sms-button" type="submit">Send Next SMS</button>
+</form>
+</div>
+<!-- <form action="{{ url_for('main') }}">
+    <button type="submit">Cancel</button>
+  </form> -->
+<!-- Button to cancel and go back to the previous page -->
+<div class="description-section">
+    <p>Click cancel to go back</p>
+<button id ="back" type="button" class="cancel-button" onclick="history.back()">Cancel</button>
+</div>
+
+

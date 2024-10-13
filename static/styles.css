@@ -1,0 +1,172 @@
+/* General container styling */
+body, h1, p, div, button, input {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', Arial, sans-serif;
+}
+
+body {
+    font-family: 'Raleway', Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px; 
+}
+
+/* Shared styling for containers */
+.container, .search-section, .results-section, .download-section {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    margin: 20px auto;
+    margin-bottom: 0px;
+}
+
+.description-section {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Increased width */
+    width: 100%; /* You can adjust the width here as well */
+    margin: 20px auto;
+    margin-bottom: 0px;
+    
+}
+
+
+/* Description Section Styling */
+.description-section p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Search Section Styling */
+.search-section p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.query-input {
+    width: 60%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Results Section Styling */
+.results-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.results-section li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.place-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.place-details {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Download Button Section */
+.download-section {
+    margin-top: 20px;
+}
+
+/* Optional: Add hover effect */
+.container li:hover {
+    background-color: #f9f9f9;
+    transition: background-color 0.3s;
+}
+
+
+/* Optional styling for radius input */
+.radius-input {
+    margin-top: 10px;
+    width: 30%;  /* Adjust as needed */
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 10px;
+
+}
+
+.sms-button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.cancel-button {
+    padding: 10px 20px;
+    background-color: #de0a3f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.send-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745; /* Green background */
+    color: white; /* White text */
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px; /* Add space if needed */
+    
+}
+
+.send-link:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.sms-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.cancel-button:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
