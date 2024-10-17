@@ -3,6 +3,7 @@ from datetime import datetime
 from flask import send_file
 from phonenumbers.phonenumberutil import region_code_for_country_code, country_code_for_region
 from get_location import *
+from urllib.parse import urljoin
 import googlemaps
 import csv
 import os
@@ -45,22 +46,31 @@ def main():
                 address = place.get('vicinity', 'No address available')
                 id = place['place_id']
                 
+               
                 #print for debugging purposes
                 print(place['name'], "-", place.get('vicinity', 'No address available'), place.get('rating'))
                 
     
     
-                details = gmaps.place(place_id=id, fields=['formatted_phone_number', 'international_phone_number'])
-                phone_number = details['result'].get('formatted_phone_number') or details['result'].get('international_phone_number', 'No phone number available')
-    
+                details = gmaps.place(place_id=id, fields=['formatted_phone_number', 'international_phone_number','website'])
+                phone_number = details['result'].get('formatted_phone_number', 'No phone number available') or details['result'].get('international_phone_number', 'No phone number available')
+                website = details['result'].get('website','No website available')
+                print(website)
+                print(phone_number)
                 if phone_number != "No phone number available":
                     phone_number=phone_number.replace(" ","")
     
                 
                     phone=phone_country_code+phone_number
-                
+                else:
+                    phone = phone_number
 
-                places_to_display.append({'name': name,'vicinity': address,'rating': rating,'phone': phone})
+                if website == "No website available":
+                     gm_link = urljoin('https://www.google.com/maps/place/','?q=place_id:'+id)
+                     print(gm_link)
+                else:
+                    gm_link = None
+                places_to_display.append({'name': name,'vicinity': address,'rating': rating,'phone': phone, 'website': website, 'gm_link': gm_link if gm_link else None})
                 #display for debugging purposes
                 print(places_to_display)
 
@@ -90,8 +100,16 @@ def download_csv():
     
     with open(file_name, 'a', newline='', encoding='utf-8') as file:
         writer =csv.writer(file, delimiter=';', quotechar='"')
+        writer.writerow(['Name','Address','Rating','Phone','Website'])
         for place in places_to_display:
-            writer.writerow([place['name'], place['vicinity'], place['rating'], place['phone']])
+            
+            if place['phone'] == "No phone number available":
+                place['phone'] = 'N/A'
+            
+            if place['website'] == "No website available":
+                place['website'] = 'N/A'
+            
+            writer.writerow([place['name'], place['vicinity'], place['rating'], place['phone'], place['website']])
             
         
         pass

@@ -34,7 +34,12 @@
         <ul class="container">
             {% for place in places_to_display %}
             <li>
-                <span class="place-name">{{ place.name }}</span>
+                <!--<span class="place-name">{{ place.name }}</span> -->
+                <a href="{{ place.gm_link if place.gm_link else place.website }}" target="_blank">
+                    <span class="place-name">{{ place.name }}</span>
+                  </a>
+                  
+                
                 <span class="place-details">{{ place.vicinity }} | Rating: {{ place.rating }} | Phone: {{ place.phone }}</span>
             </li>
             {% endfor %}
